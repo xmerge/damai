@@ -18,5 +18,12 @@ public interface UserService extends IService<UserDO> {
 
     void testSet(String key, Object value);
 
+    boolean register(UserDO userDO);
+
+    /**
+     * 根据用户名获取用户信息
+     * @param username 用户名
+     * @return 用户信息
+     */
     UserDO getByUsername(String username);
 }

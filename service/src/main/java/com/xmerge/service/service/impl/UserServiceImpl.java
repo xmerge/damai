@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -42,6 +43,18 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     }
 
     @Override
+    @Transactional
+    public boolean register(UserDO userDO) {
+        if (hasUsername(userDO.getUsername())) {
+            System.out.println("用户名已存在");
+            return false;
+        }
+        boolean res = save(userDO);
+        distributedCache.safeSet(userDO.getUsername(), userDO, 600);
+        return res;
+    }
+
+    @Override
     public UserDO getByUsername(String username) {
         return distributedCache.safeGet(
                 username,
@@ -51,5 +64,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
                     return userMapper.selectOne(queryWrapper);
                 },
                 600);
+    }
+
+    public boolean hasUsername(String username) {
+        return getByUsername(username) != null;
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author Xmerge
  */
 @SpringBootApplication
-@ComponentScan({"com.xmerge.service", "com.xmerge.cache"})
+@ComponentScan({"com.xmerge.service", "com.xmerge.cache", "com.xmerge.web"})
 @MapperScan(basePackages = "com.xmerge.service.dao.mapper")
 public class ServiceApplication {
 

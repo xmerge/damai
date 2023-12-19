@@ -7,24 +7,15 @@
         <groupId>com.xmerge</groupId>
         <artifactId>damai</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>damai-framework</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>cache</module>
-        <module>constant</module>
-        <module>web</module>
-    </modules>
+    <artifactId>constant</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <dependencies>
-    </dependencies>
 
 </project>

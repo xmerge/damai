@@ -1,9 +1,10 @@
 package com.xmerge.service.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+
+import com.xmerge.constant.result.Result;
 import com.xmerge.service.dao.entity.UserDO;
 import com.xmerge.service.service.UserService;
+import com.xmerge.web.globalResult.GlobalResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,8 +34,18 @@ public class UserController {
         return userService.getByUsername(username);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/register")
     public boolean add(@RequestBody UserDO userDO) {
-        return userService.save(userDO);
+        return userService.register(userDO);
+    }
+
+    @GetMapping("/test")
+    public Result<Void> test() {
+        return GlobalResult.success();
+    }
+
+    @GetMapping("/testFail")
+    public Result<Void> testFail() {
+        throw new RuntimeException("test fail");
     }
 }
