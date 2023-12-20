@@ -19,6 +19,9 @@ public enum ServerErrorCode implements IErrorCode {
     SERVICE_NOT_IMPLEMENT("B10004", "服务未实现"),
     SERVICE_NOT_SUPPORT("B10005", "服务不支持"),
     SERVICE_NOT_SUPPORT_METHOD("B10006", "服务不支持该方法"),
+
+    SERVICE_BUSY("B10007", "服务繁忙"),
+    SERVICE_UNAVAILABLE("B10008", "服务不可用"),
     ;
 
     private final String code;

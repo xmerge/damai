@@ -1,7 +1,7 @@
 package com.xmerge.service.dao.mapper;
 
-import com.xmerge.service.dao.entity.UserDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xmerge.service.dao.entity.UserDO;
 
 /**
  * <p>

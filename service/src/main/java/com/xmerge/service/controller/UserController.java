@@ -2,14 +2,12 @@ package com.xmerge.service.controller;
 
 
 import com.xmerge.convention.exception.ClientException;
-import com.xmerge.convention.exception.errorcode.ClientErrorCode;
 import com.xmerge.convention.exception.errorcode.ServerErrorCode;
 import com.xmerge.convention.result.Result;
 import com.xmerge.service.dao.entity.UserDO;
 import com.xmerge.service.dto.req.UserRegisterReqDTO;
-import com.xmerge.service.service.UserService;
+import com.xmerge.service.service.UserLoginService;
 import com.xmerge.web.globalResult.GlobalResult;
-import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,21 +25,21 @@ import java.util.List;
 @RequestMapping("/service/user")
 public class UserController {
     @Resource
-    UserService userService;
+    UserLoginService userLoginService;
 
     @GetMapping("/list")
     public List<UserDO> list() {
-        return userService.list();
+        return userLoginService.list();
     }
 
     @GetMapping("/get")
     public UserDO get(@RequestParam  String username) {
-        return userService.getByUsername(username);
+        return userLoginService.getByUsername(username);
     }
 
     @PostMapping("/register")
-    public Result<UserDO> add(@RequestBody UserRegisterReqDTO userRegisterReqDTO) {
-        return userService.register(userRegisterReqDTO);
+    public Result<UserDO> register(@RequestBody UserRegisterReqDTO userRegisterReqDTO) {
+        return userLoginService.register(userRegisterReqDTO);
     }
 
     @GetMapping("/test")

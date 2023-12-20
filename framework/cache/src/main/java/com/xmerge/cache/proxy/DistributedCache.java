@@ -2,6 +2,8 @@ package com.xmerge.cache.proxy;
 
 import com.xmerge.cache.core.CacheLoader;
 
+import java.util.concurrent.TimeUnit;
+
 
 /**
  * @author Xmerge
@@ -20,6 +22,8 @@ public interface DistributedCache {
      * @param key 放入的key
      * @param value key对应value
      */
+    void set(String key, Object value, long timeout, TimeUnit timeUnit);
+
     void set(String key, Object value, long timeout);
 
     /**
@@ -30,8 +34,10 @@ public interface DistributedCache {
      * @param timeout 超时时间
      * @return 缓存结果
      */
+
     <T> T safeGet(String key, Class<T> clazz, CacheLoader<T> cacheLoader, long timeout);
 
     void safeSet(String key, Object value, long timeout);
 
+    void safeSet(String key, Object value, long timeout, TimeUnit timeUnit);
 }

@@ -1,9 +1,9 @@
-package com.xmerge.service.service.handler.filter;
+package com.xmerge.service.service.handler;
 
 import com.xmerge.convention.exception.ClientException;
 import com.xmerge.convention.exception.errorcode.ClientErrorCode;
 import com.xmerge.service.dto.req.UserRegisterReqDTO;
-import com.xmerge.service.service.UserService;
+import com.xmerge.service.service.UserLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class UserRegisterHasUserNameHandler implements UserCheckChainHandler<UserRegisterReqDTO> {
 
-    private final UserService userService;
+    private final UserLoginService userLoginService;
 
     /**
      * 责任链处理器，执行处理逻辑
@@ -25,7 +25,7 @@ public class UserRegisterHasUserNameHandler implements UserCheckChainHandler<Use
     @Override
     public void handle(UserRegisterReqDTO requestParam) {
         String username = requestParam.getUsername();
-        if (userService.hasUsername(username)) {
+        if (userLoginService.hasUsername(username)) {
             throw new ClientException(ClientErrorCode.USERNAME_EXIST);
         }
         log.info("用户名校验通过");

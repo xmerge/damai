@@ -32,8 +32,8 @@ public class UserDO implements Serializable {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    private String id;
 
     /**
      * 用户名
@@ -96,13 +96,13 @@ public class UserDO implements Serializable {
     private Integer verifyStatus;
 
     /**
-     * 删除标志 0-未删除 1-已删除
+     * 注销标志 0-未注销 1-已注销
      */
     @TableField("del_flag")
     private Integer delFlag;
 
     /**
-     * 删除时间
+     * 注销时间
      */
     @TableField("deletion_time")
     private Date deletionTime;
