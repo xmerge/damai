@@ -50,6 +50,7 @@ public class UserController {
 
     @GetMapping("/testFail")
     public Result<String> testFail() {
+        // 该异常会被damai-framework中的web模块中的GlobalExceptionHandler捕获
         throw new ClientException(ServerErrorCode.BASE_ERROR);
     }
 }
