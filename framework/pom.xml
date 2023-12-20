@@ -14,7 +14,7 @@
 
     <modules>
         <module>cache</module>
-        <module>constant</module>
+        <module>convention</module>
         <module>web</module>
     </modules>
 

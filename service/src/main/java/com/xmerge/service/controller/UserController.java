@@ -1,10 +1,14 @@
 package com.xmerge.service.controller;
 
 
-import com.xmerge.constant.result.Result;
+import com.xmerge.convention.exception.ClientException;
+import com.xmerge.convention.exception.errorcode.ClientErrorCode;
+import com.xmerge.convention.exception.errorcode.ServerErrorCode;
+import com.xmerge.convention.result.Result;
 import com.xmerge.service.dao.entity.UserDO;
 import com.xmerge.service.service.UserService;
 import com.xmerge.web.globalResult.GlobalResult;
+import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,12 +44,12 @@ public class UserController {
     }
 
     @GetMapping("/test")
-    public Result<Void> test() {
-        return GlobalResult.success();
+    public Result<String> test() {
+        return GlobalResult.success("Hello World!");
     }
 
     @GetMapping("/testFail")
-    public Result<Void> testFail() {
-        throw new RuntimeException("test fail");
+    public Result<String> testFail() {
+        throw new ClientException(ServerErrorCode.BASE_ERROR);
     }
 }

@@ -1,4 +1,4 @@
-package com.xmerge.constant.result;
+package com.xmerge.convention.result;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -41,6 +41,10 @@ public class Result<T> implements Serializable {
      */
     private String requestId;
 
+    /**
+     * 判断是否成功
+     * 序列化时自动转化为success字段
+     */
     public boolean isSuccess() {
         return SUCCESS_CODE.equals(code);
     }

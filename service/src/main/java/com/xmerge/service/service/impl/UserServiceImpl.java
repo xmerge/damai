@@ -43,12 +43,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean register(UserDO userDO) {
+        // 责任链验证注册信息是否合法
         if (hasUsername(userDO.getUsername())) {
             System.out.println("用户名已存在");
             return false;
         }
+
         boolean res = save(userDO);
         distributedCache.safeSet(userDO.getUsername(), userDO, 600);
         return res;
