@@ -6,6 +6,7 @@ import com.xmerge.convention.exception.errorcode.ClientErrorCode;
 import com.xmerge.convention.exception.errorcode.ServerErrorCode;
 import com.xmerge.convention.result.Result;
 import com.xmerge.service.dao.entity.UserDO;
+import com.xmerge.service.dto.req.UserRegisterReqDTO;
 import com.xmerge.service.service.UserService;
 import com.xmerge.web.globalResult.GlobalResult;
 import org.apache.catalina.connector.ClientAbortException;
@@ -39,8 +40,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public boolean add(@RequestBody UserDO userDO) {
-        return userService.register(userDO);
+    public Result<UserDO> add(@RequestBody UserRegisterReqDTO userRegisterReqDTO) {
+        return userService.register(userRegisterReqDTO);
     }
 
     @GetMapping("/test")

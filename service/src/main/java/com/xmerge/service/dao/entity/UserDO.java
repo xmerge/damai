@@ -4,10 +4,13 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -19,9 +22,11 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@Accessors(chain = true)
 @TableName("tb_user")
 public class UserDO implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**
@@ -113,4 +118,20 @@ public class UserDO implements Serializable {
      */
     @TableField("update_time")
     private Date updateTime;
+
+    @Override
+    public String toString() {
+        return "UserDO{" +
+        "id=" + id +
+        ", username=" + username +
+        ", password=" + password +
+        ", realName=" + realName +
+        ", region=" + region +
+        ", idType=" + idType +
+        ", idCard=" + idCard +
+        ", phoneNumber=" + phoneNumber +
+        ", mail=" + mail +
+        ", userType=" + userType +
+        ", verifyStatus=" + verifyStatus;
+    }
 }
