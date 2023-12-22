@@ -110,6 +110,17 @@ public class StringRedisTemplateProxy implements DistributedCache {
     }
 
     @Override
+    public boolean delete(String key) {
+        log.info("尝试删除key:{}", key);
+        return Boolean.TRUE.equals(stringRedisTemplate.delete(key));
+    }
+
+    @Override
+    public boolean hasKey(String key) {
+        return Boolean.TRUE.equals(stringRedisTemplate.hasKey(key));
+    }
+
+    @Override
     public void safeSet(String key, Object value, long timeout) {
         safeSet(key, value, timeout, TimeUnit.SECONDS);
     }

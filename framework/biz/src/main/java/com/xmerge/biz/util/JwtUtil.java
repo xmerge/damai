@@ -4,6 +4,7 @@ package com.xmerge.biz.util;
 import com.alibaba.fastjson2.JSON;
 import com.xmerge.base.constant.UserConstant;
 import com.xmerge.biz.dto.UserInfoDTO;
+import com.xmerge.cache.proxy.DistributedCache;
 import com.xmerge.convention.exception.ClientException;
 import com.xmerge.convention.exception.errorcode.ClientErrorCode;
 import io.jsonwebtoken.Claims;
@@ -11,6 +12,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
@@ -22,6 +24,7 @@ import java.util.Map;
  */
 @Slf4j
 public final class JwtUtil {
+
 
     /** Token 过期时间 */
     private static final long EXPIRATION = 86400L;

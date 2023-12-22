@@ -51,6 +51,11 @@ public class UserController {
         return GlobalResult.success(userLoginService.login(userLoginReqDTO));
     }
 
+    @GetMapping("/logout")
+    public Result<Boolean> logout() {
+        return GlobalResult.success(userLoginService.logout());
+    }
+
     @GetMapping("/check-login")
     public Result<UserInfoDTO> checkLogin() {
         return GlobalResult.success(userLoginService.checkLogin());

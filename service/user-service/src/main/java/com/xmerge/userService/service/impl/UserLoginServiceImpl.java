@@ -1,7 +1,9 @@
 package com.xmerge.userService.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.xmerge.base.constant.UserConstant;
 import com.xmerge.biz.core.UserInfoContext;
 import com.xmerge.cache.proxy.DistributedCache;
 import com.xmerge.chainHandler.chain.ChainHandlerContext;
@@ -115,7 +117,9 @@ public class UserLoginServiceImpl extends ServiceImpl<UserMapper, UserDO> implem
                     .build();
             String accessToken = JwtUtil.generateAccessToken(userInfoDTO);
             userLoginRespDTO.setAccessToken(accessToken);
-            distributedCache.set(accessToken, userLoginRespDTO, 60, TimeUnit.MINUTES);
+            distributedCache.set(UserConstant.USER_TOKEN_KEY + accessToken, userInfoDTO, 7, TimeUnit.DAYS);
+            UserInfoDTO testDTO = distributedCache.get(UserConstant.USER_TOKEN_KEY + accessToken, UserInfoDTO.class);
+            log.info("testDTO:{}", testDTO);
             return userLoginRespDTO;
         }
         throw new ClientException(ClientErrorCode.USERNAME_OR_PASSWORD_ERROR);
@@ -123,21 +127,22 @@ public class UserLoginServiceImpl extends ServiceImpl<UserMapper, UserDO> implem
 
     @Override
     public UserInfoDTO checkLogin() {
-        String username = UserInfoContext.getUserId();
-        if (username == null) {
+        UserInfoDTO userInfoDTO = UserInfoContext.getUser();
+        if (ObjectUtils.isNull(userInfoDTO)) {
             throw new ClientException(ClientErrorCode.LOGIN_NOT_EXIST);
         }
-        return UserInfoDTO.builder()
-                .userId(UserInfoContext.getUserId())
-                .username(username)
-                .realName(UserInfoContext.getRealName())
-                .accessToken(UserInfoContext.getAccessToken())
-                .build();
+        log.info("用户上下文信息：{}", userInfoDTO);
+        return userInfoDTO;
     }
 
     @Override
-    public Result<String> logout(String accessToken) {
-        return null;
+    public boolean logout() {
+        String accessToken = UserInfoContext.getAccessToken();
+        boolean res = distributedCache.delete(UserConstant.USER_TOKEN_KEY + accessToken);
+        if (res) {
+            return true;
+        }
+        throw new ClientException(ClientErrorCode.LOGIN_NOT_EXIST);
     }
 
     @Override

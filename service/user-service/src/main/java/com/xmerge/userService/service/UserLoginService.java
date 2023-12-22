@@ -38,7 +38,7 @@ public interface UserLoginService extends IService<UserDO> {
     /**
      * 退出登录
      */
-    Result<String> logout(String accessToken);
+    boolean logout();
 
     /**
      * 用户注销

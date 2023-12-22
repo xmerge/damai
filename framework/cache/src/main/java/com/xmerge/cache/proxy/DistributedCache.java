@@ -40,4 +40,8 @@ public interface DistributedCache {
     void safeSet(String key, Object value, long timeout);
 
     void safeSet(String key, Object value, long timeout, TimeUnit timeUnit);
+
+    boolean delete(String key);
+
+    boolean hasKey(String key);
 }

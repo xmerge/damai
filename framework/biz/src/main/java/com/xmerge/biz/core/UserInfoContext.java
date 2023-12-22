@@ -22,6 +22,13 @@ public final class UserInfoContext {
     }
 
     /**
+     * 获取用户上下文信息
+     */
+    public static UserInfoDTO getUser() {
+        return USER_THREAD_LOCAL.get();
+    }
+
+    /**
      * 获取上下文中用户 ID
      * @return 用户 ID
      */
