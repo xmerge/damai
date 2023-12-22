@@ -68,6 +68,7 @@ public class StringRedisTemplateProxy implements DistributedCache {
      */
     @Override
     public <T> T safeGet(String key, Class<T> clazz, CacheLoader<T> cacheLoader, long timeout) {
+        // 先从缓存中读取
         T res = get(key, clazz);
         // 缓存结果非空则返回，否则加锁并读取数据库
         if (!CacheUtil.isNullOrBlank(res)) {

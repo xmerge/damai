@@ -32,7 +32,13 @@ public enum ClientErrorCode implements IErrorCode {
     EMAIL_NOT_EXIST("C10015", "邮箱不存在"),
     EMAIL_OR_PASSWORD_ERROR("C10016", "邮箱或密码错误"),
     EMAIL_OR_PASSWORD_LENGTH("C10017", "邮箱或密码长度不符合要求"),
-    EMAIL_OR_PASSWORD_NULL("C10018", "邮箱或密码不能为空");
+    EMAIL_OR_PASSWORD_NULL("C10018", "邮箱或密码不能为空"),
+
+    LOGIN_ERROR("C10019", "登录失败"),
+    LOGIN_EXPIRED("C10020", "登录过期"),
+    LOGIN_NOT_EXIST("C10021", "登录信息不存在"),
+    LOGIN_TOKEN_ERROR("C10022", "登录信息错误"),
+    ;
 
     private final String code;
     private final String message;

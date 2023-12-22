@@ -5,12 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xmerge</groupId>
-        <artifactId>damai</artifactId>
+        <artifactId>damai-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>base</artifactId>
+    <artifactId>damai-framework-base</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

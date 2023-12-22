@@ -2,13 +2,23 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/framework/base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/biz/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/cache/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/chainHandler/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/convention/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/damai-framework-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/damai-framework-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/util/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/framework/web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/web1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/framework/web1/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/user-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

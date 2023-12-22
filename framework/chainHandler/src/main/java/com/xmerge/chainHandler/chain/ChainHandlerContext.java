@@ -34,7 +34,7 @@ public class ChainHandlerContext<T> implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // 查找IChainHandler类型的Bean
         Map<String, IChainHandler> chainFilterMap = ApplicationContextHolder.getBeansOfType(IChainHandler.class);
-//        log.info("查找到责任链组件: {}", chainFilterMap.keySet());
+        log.info("查找到责任链组件: {}", chainFilterMap.keySet());
         chainFilterMap.forEach((name, bean) -> {
             List<IChainHandler<T>> chainHandlers = chainHandlerContainer.get(bean.mark());
             List<IChainHandler<T>> newChainHandlers = new ArrayList<>();
@@ -47,7 +47,8 @@ public class ChainHandlerContext<T> implements CommandLineRunner {
                     .sorted(Comparator.comparing(Ordered::getOrder))
                     .toList();
             chainHandlerContainer.put(bean.mark(), sortedChainHandler);
-//            log.info("责任链组件: {} - {} 已添加.", bean.mark(), name);
+            log.info("责任链组件: {} - {} 已添加.", bean.mark(), name);
         });
+//        log.info(chainHandlerContainer.toString());
     }
 }

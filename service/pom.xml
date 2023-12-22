@@ -9,23 +9,41 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>service</name>
-    <description>service</description>
+    <artifactId>damai-service</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>user-service</module>
+    </modules>
+
     <properties>
         <java.version>17</java.version>
-
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>web</artifactId>
+            <artifactId>damai-framework-web</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>chainHandler</artifactId>
+            <artifactId>damai-framework-biz</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xmerge</groupId>
+            <artifactId>damai-framework-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xmerge</groupId>
+            <artifactId>damai-framework-convention</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xmerge</groupId>
+            <artifactId>damai-framework-chainHandler</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -64,7 +82,7 @@
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>cache</artifactId>
+            <artifactId>damai-framework-cache</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
