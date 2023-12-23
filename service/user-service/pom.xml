@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xmerge</groupId>
-        <artifactId>damai-service</artifactId>
+        <artifactId>yunpiao-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>damai-user-service</artifactId>
+    <artifactId>yunpiao-user-service</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

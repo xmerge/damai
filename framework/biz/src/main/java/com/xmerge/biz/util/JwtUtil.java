@@ -29,7 +29,7 @@ public final class JwtUtil {
     /** Token 过期时间 */
     private static final long EXPIRATION = 86400L;
     public static final String TOKEN_PREFIX = "Token";
-    public static final String ISS = "damai";
+    public static final String ISS = "yunpiao";
     public static final String SECRET = "SecretKey039245678901232039487623456783092349288901402967890140939827";
 
     /**

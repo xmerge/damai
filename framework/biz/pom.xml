@@ -6,11 +6,11 @@
 
     <parent>
         <groupId>com.xmerge</groupId>
-        <artifactId>damai-framework</artifactId>
+        <artifactId>yunpiao-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>damai-framework-biz</artifactId>
+    <artifactId>yunpiao-framework-biz</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -20,12 +20,12 @@
     <dependencies>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-base</artifactId>
+            <artifactId>yunpiao-framework-base</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-convention</artifactId>
+            <artifactId>yunpiao-framework-convention</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -36,7 +36,7 @@
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-cache</artifactId>
+            <artifactId>yunpiao-framework-cache</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

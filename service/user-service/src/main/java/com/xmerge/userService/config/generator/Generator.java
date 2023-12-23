@@ -15,16 +15,17 @@ import java.util.List;
 public class Generator {
     public static void main(String[] args) {
         //数据库连接
-        String url = "jdbc:mysql://localhost:3306/damai";//数据库url
+        String url = "jdbc:mysql://localhost:3306/yunpiao";//数据库url
         String username = "root";//账号
         String password = "123456";//密码
-        String module = "service";//项目模块名，如果是有父项目的话，需要配置。
+        String baseModule = "service"; //项目根目录
+        String module = "user-service";//项目模块名，如果是有父项目的话，需要配置。
         //全局配置参数
         String author = "Xmerge";//作者
-        String outputDir = System.getProperty("user.dir") + "/" + module + "/src/main/java";//指定输出目录
+        String outputDir = System.getProperty("user.dir") + "/" + baseModule + "/" + module + "/src/main/java";//指定输出目录
         //包配置参数
         String parent = "com.xmerge";//父包名
-        String moduleName = "service";//父包模块名
+        String moduleName = "userService";//父包模块名
         String entity = "dao.entity";//Entity 实体类包名
         String mapper = "dao.mapper";//Mapper 包名
         String mapperXml = "dao.mapper.xml";//Mapper XML 包名
@@ -34,6 +35,7 @@ public class Generator {
         //要生成的数据库表
         List<String> tables = new ArrayList<>();
         tables.add("tb_user");
+        tables.add("tb_audience");
         //开始生成
         FastAutoGenerator.create(url, username, password)
                 //全局配置

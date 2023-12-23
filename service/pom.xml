@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xmerge</groupId>
-        <artifactId>damai</artifactId>
+        <artifactId>yunpiao</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>damai-service</artifactId>
+    <artifactId>yunpiao-service</artifactId>
     <packaging>pom</packaging>
 
     <modules>
@@ -22,28 +22,28 @@
     <dependencies>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-web</artifactId>
+            <artifactId>yunpiao-framework-web</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-biz</artifactId>
+            <artifactId>yunpiao-framework-biz</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-util</artifactId>
+            <artifactId>yunpiao-framework-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-convention</artifactId>
+            <artifactId>yunpiao-framework-convention</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-chainHandler</artifactId>
+            <artifactId>yunpiao-framework-chainHandler</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -82,7 +82,7 @@
         </dependency>
         <dependency>
             <groupId>com.xmerge</groupId>
-            <artifactId>damai-framework-cache</artifactId>
+            <artifactId>yunpiao-framework-cache</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
