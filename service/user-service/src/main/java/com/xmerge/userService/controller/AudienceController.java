@@ -1,5 +1,6 @@
 package com.xmerge.userService.controller;
 
+import com.xmerge.idempotent.annotation.Idempotent;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-12-23
  */
 @RestController
-@RequestMapping("/userService/audienceDO")
+@RequestMapping("/userService/audience")
 public class AudienceController {
-
+    @Idempotent
+    @RequestMapping("/test")
+    public String test() {
+        try{
+            Thread.sleep(2000);
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
+        return "test";
+    }
 }

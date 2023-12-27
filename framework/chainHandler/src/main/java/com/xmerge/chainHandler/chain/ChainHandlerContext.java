@@ -31,6 +31,7 @@ public class ChainHandlerContext<T> implements CommandLineRunner {
      * 实现了CommandLineRunner接口，项目启动时执行
      */
     @Override
+    @SuppressWarnings({"unchecked", "rawtypes"}) // 无视警告
     public void run(String... args) throws Exception {
         // 查找IChainHandler类型的Bean
         Map<String, IChainHandler> chainFilterMap = ApplicationContextHolder.getBeansOfType(IChainHandler.class);

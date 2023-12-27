@@ -10,7 +10,7 @@ import com.xmerge.convention.exception.errorcode.IErrorCode;
 public class ClientException extends AbstractException {
 
     public ClientException(IErrorCode errorCode) {
-        this(null, errorCode, null);
+        this(null, errorCode, errorCode.getMessage());
     }
 
     public ClientException(String message) {

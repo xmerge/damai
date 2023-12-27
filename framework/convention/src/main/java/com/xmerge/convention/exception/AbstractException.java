@@ -20,7 +20,7 @@ public abstract class AbstractException extends RuntimeException {
     public AbstractException(Throwable throwable, IErrorCode errorCode, String message) {
         super(message, throwable);
         this.errorCode = errorCode.getCode();
-        this.errorMessage = errorCode.getMessage();
+        this.errorMessage = message;
     }
 
 }
