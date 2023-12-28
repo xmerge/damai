@@ -26,7 +26,9 @@ public final class IdempotentAspect {
         IdempotentExecuteHandler instance = IdempotentExecuteHandlerFactory.getInstance(idempotent.scene(), idempotent.type());
         Object resultObj = null;
         try {
+            // 执行幂等处理逻辑
             instance.execute(joinPoint, idempotent);
+            // 执行业务逻辑(幂等处理成功后才执行业务逻辑)
             resultObj = joinPoint.proceed();
         } catch (Throwable ex) {
 //            log.warn("幂等处理异常", ex);

@@ -28,6 +28,7 @@ public class IdempotentParamExecuteHandler extends AbstractIdempotentExecuteHand
     private final RedissonClient redissonClient;
     private static final String LOCK_KEY_PREFIX = "idempotent:param:";
 
+
     @Override
     protected IdempotentParamWrapper buildWrapper(ProceedingJoinPoint joinPoint) {
         String lockKey = String.format("idempotent:path:%s:currentUserId:%s:md5:%s", getServletPath(), getCurrentUserId(), calcArgsMd5(joinPoint));
@@ -38,18 +39,11 @@ public class IdempotentParamExecuteHandler extends AbstractIdempotentExecuteHand
     public void handle(IdempotentParamWrapper idempotentParamWrapper) {
         String lockKey = LOCK_KEY_PREFIX + idempotentParamWrapper.getLockKey();
         RLock lock = redissonClient.getLock(lockKey);
-        log.info("尝试上锁");
+        log.info("尝试上锁 {}", lock.getName());
         if (!lock.tryLock()) {
             throw new ClientException("请勿重复提交");
         }
-        IdempotentContext.putContext(LOCK_KEY_PREFIX, lock);
-    }
-
-    public void clearLock(String lockKey) {
-        RLock lock = redissonClient.getLock(lockKey);
-        if (lock.isLocked()) {
-            lock.unlock();
-        }
+        IdempotentContext.putContext(lock);
     }
 
 
@@ -57,11 +51,12 @@ public class IdempotentParamExecuteHandler extends AbstractIdempotentExecuteHand
     public void postProcessing() {
         RLock lock = null;
         try {
-            lock = (RLock) IdempotentContext.getKey(LOCK_KEY_PREFIX);
+            lock = IdempotentContext.getLock();
         } catch (Exception e) {
-            log.warn("获取锁失败", e);
+            log.error("获取锁失败", e);
         } finally {
             if (lock != null && lock.isLocked()) {
+                log.info("解锁 {}", lock.getName());
                 lock.unlock();
             }
         }

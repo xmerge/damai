@@ -33,7 +33,7 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(value = Throwable.class)
     public Result<Object> defaultErrorHandler(HttpServletRequest request, Throwable throwable) {
-        log.error("[{}] {} ", request.getMethod(), getUrl(request), throwable);
+        log.warn("[{}] {} ", request.getMethod(), getUrl(request), throwable);
         return GlobalResult.failure();
     }
 

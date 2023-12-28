@@ -1,28 +1,26 @@
 package com.xmerge.idempotent.core.context;
 
-import cn.hutool.core.collection.CollUtil;
-import com.google.common.collect.Maps;
+import org.redisson.api.RLock;
 
-import java.util.Map;
 
 /**
  * @author Xmerge
  */
 public final class IdempotentContext {
 
-    private static final ThreadLocal<Map<String, Object>> CONTEXT = new ThreadLocal<>();
+    private static final ThreadLocal<RLock> CONTEXT = new ThreadLocal<>();
 
     /**
      * 获取上下文
      */
-    public static Map<String, Object> getContext() {
+    public static RLock getContext() {
         return CONTEXT.get();
     }
 
-    public static Object getKey(String key) {
-        Map<String, Object> context = getContext();
+    public static RLock getLock() {
+        RLock context = getContext();
         if (context != null) {
-            return context.get(key);
+            return CONTEXT.get();
         }
         return null;
     }
@@ -31,22 +29,20 @@ public final class IdempotentContext {
     /**
      * 保存上下文
      */
-    public static void putContext(String key, Object val) {
-        Map<String, Object> context = getContext();
-        if (CollUtil.isEmpty(context)) {
-            context = Maps.newHashMap();
+    public static void putContext(RLock lock) {
+        RLock context = getContext();
+        if (context != null) {
+            context = lock;
         }
-        context.put(key, val);
-        put(context);
+        put(lock);
     }
 
     /**
      * 保存上下文
      */
-    private static void put(Map<String, Object> context) {
-        Map<String, Object> threadContext = CONTEXT.get();
-        if (CollUtil.isNotEmpty(threadContext)) {
-            threadContext.putAll(context);
+    private static void put(RLock context) {
+        RLock threadContext = CONTEXT.get();
+        if (threadContext != null) {
             return;
         }
         CONTEXT.set(context);
